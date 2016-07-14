@@ -1,0 +1,13 @@
+{
+    "dependencies": {
+        "es6-promise": "registry:npm/es6-promise#3.0.0+20160211003958"
+    },
+    "devDependencies": {},
+    "globalDependencies": {
+        "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504",
+        "firebase": "https://gist.githubusercontent.com/cdcarson/28399c50b02bf6c507fbf5b7b30daa31/raw/fa089d231ca4253d4715f8161efc6af74c972dfa/firebase-sdk-3-typings.d.ts"
+    },
+    "files": [
+        "node_modules/angularfire2/firebase3.d.ts"
+    ]
+}
