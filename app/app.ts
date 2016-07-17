@@ -58,7 +58,7 @@ import {AboutPage} from './pages/about/about';
     <ion-nav id="nav" #content [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-  rootPage : any              = ConferencePage;
+  rootPage : any              = WaxtaanuFajarPage;
   private homepage            = HomePage;
   private tafsirPage          = TafsirPage;
   private waxtaanuFajarPage   = WaxtaanuFajarPage;

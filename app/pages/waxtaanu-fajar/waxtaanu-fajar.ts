@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { AudioPlayer, Audio} from '../../providers/audio-player/audio-player'
+import { AudioPlayer, AudioObject} from '../../providers/audio-player/audio-player'
 /*
   Generated class for the WaxtanuFajarPage page.
 
@@ -12,9 +12,12 @@ import { AudioPlayer, Audio} from '../../providers/audio-player/audio-player'
   directives : [AudioPlayer]
 })
 export class WaxtaanuFajarPage {
-  private audio : Audio;
+  private audioObject : AudioObject;
   constructor(private nav: NavController) {
-      this.audio=new Audio("toto","http://toto.com",22);
+      this.audioObject = new AudioObject("ChIbSakho 1","https://firebasestorage.googleapis.com/v0/b/alioune-sall.appspot.com/o/Tafsir%2Ftafsir_04_07_2014.mp3?alt=media&token=4e3cae10-d799-4e3a-8887-a099ceb18da7",22);
   }
-
+ private setName()
+ {
+   this.audioObject.name="tututut";
+ }
 }
