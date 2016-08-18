@@ -1,6 +1,6 @@
 import { Injectable, Component , Input, } from '@angular/core';
 
-export class AudioObject {
+export class AudioSource {
   name  : string;
   url   : string;
   id    : number;
@@ -18,7 +18,7 @@ export class AudioObject {
   selector: 'audio-player',
   template: `
   <ion-card>
-    Name : {{audioObject.name}} <br/>
+    Name : {{source.name}} <br/>
   </ion-card>
 
         <div class="audio-player">
@@ -69,8 +69,8 @@ export class AudioObject {
 })
 export class AudioPlayer {
   @Input()
-  audioObject     : AudioObject;
-  playList        : [AudioObject];
+  source          : AudioSource;
+  playList        : [AudioSource];
   isPlaying       : boolean;
   isPaused        : boolean;
   state           : string;
@@ -162,7 +162,7 @@ public getDuration = function (val) {
  };
 
   ngOnInit() {
-     this.audio = new Audio(this.audioObject.url);
+     this.audio = new Audio(this.source.url);
 
     this.audio.addEventListener("durationchange", (e:any) => {    
       this._duration = e.target.duration;
@@ -171,7 +171,7 @@ public getDuration = function (val) {
     this.audio.addEventListener("timeupdate", (e) => { this.onTimeUpdate(e); }, false);
 
     this.audio.addEventListener("error", (err) => {
-      console.log(`Audio error => track ${this.audioObject.url}`, err);
+      console.log(`Audio error => track ${this.source.url}`, err);
       this.isPlaying = false;
     }, false);
   }

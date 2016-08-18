@@ -5,22 +5,28 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
     <ion-navbar>
-        <ion-title>WaxtaanuFajar</ion-title>
+        <button menuToggle>
+            <ion-icon name='menu'></ion-icon>
+        </button>
+        <ion-title>
+            WaxtanuFajarPage
+        </ion-title>
     </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
-    <button primary clear right (click)="setName()">
-                <ion-icon name="skip-backward"></ion-icon>
-              </button>
+
+    <div *ngFor="let item of items | async">
+        <button ion-item (click)="play(item)">
+           <h2>{{item.title}}</h2>
+        </button>
+    </div>
 
 </ion-content>
 
 
 <ion-footer>
-    <audio-player [audioObject]="audioObject"></audio-player>
+    <audio-player [source]="audioSource"></audio-player>
 </ion-footer>

@@ -1,13 +1,14 @@
-import {Component} from '@angular/core';
-import {Platform, ionicBootstrap, MenuController} from 'ionic-angular';
+import {Component, ViewChild} from '@angular/core';
+import {Platform, ionicBootstrap, MenuController, Nav } from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
-import { FIREBASE_PROVIDERS, defaultFirebase, FirebaseAuth, firebaseAuthConfig, AuthMethods, AuthProviders,AngularFire} from 'angularfire2';
+import {FIREBASE_PROVIDERS, defaultFirebase, FirebaseAuth, firebaseAuthConfig, AuthMethods, AuthProviders,AngularFire} from 'angularfire2';
 import {NotificationService} from './providers/notification-service/notification-service';
 import {HomePage} from './pages/home/home';
 import {WaxtaanuFajarPage} from './pages/waxtaanu-fajar/waxtaanu-fajar';
 import {TafsirPage} from './pages/tafsir/tafsir';
 import {ConferencePage} from './pages/conference/conference';
 import {AboutPage} from './pages/about/about';
+import { AudioPlayer, AudioSource} from './providers/audio-player/audio-player'
 
 
 @Component({
@@ -58,13 +59,15 @@ import {AboutPage} from './pages/about/about';
     <ion-nav id="nav" #content [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-  rootPage : any              = WaxtaanuFajarPage;
+  rootPage : any              = HomePage;
   private homepage            = HomePage;
   private tafsirPage          = TafsirPage;
   private waxtaanuFajarPage   = WaxtaanuFajarPage;
   private conferencePage      = ConferencePage;
   private aboutPage           = AboutPage;
+  @ViewChild(Nav) nav: Nav;
 
+  
   constructor(platform: Platform, private menu: MenuController) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -75,16 +78,16 @@ export class MyApp {
 
 
    openPage(page) {
-    // Reset the nav controller to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.rootPage = page;
+      // Reset the nav controller to have just this page
+      // we wouldn't want the back button to show in this scenario
+      this.nav.setRoot(page);
 
-    // close the menu when clicking a link from the menu
-    this.menu.close();
+      // close the menu when clicking a link from the menu
+      this.menu.close();
   }
 }
 
-ionicBootstrap(MyApp, [FIREBASE_PROVIDERS,NotificationService,  AngularFire,
+ionicBootstrap(MyApp, [FIREBASE_PROVIDERS,NotificationService,  AngularFire, AudioPlayer,
                                                                       defaultFirebase({
                                                                           apiKey: "AIzaSyAwdjyq9VZ8PzxN2qLnkgcYphwWDrv0h98",
                                                                           authDomain: "alioune-sall.firebaseapp.com",
